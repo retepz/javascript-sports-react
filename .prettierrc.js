@@ -1,0 +1,7 @@
+module.exports = {
+  arrowParens: 'avoid',
+  jsxSingleQuote: true,
+  printWidth: 80,
+  semi: false,
+  singleQuote: true
+}
