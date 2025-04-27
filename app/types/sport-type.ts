@@ -1,2 +1,7 @@
-const sportTypes = ['football', 'basketball'] as const;
-type SportTypes = typeof sportTypes[number];
+export const allSportTypes = [
+  'Football',
+  'Basketball',
+  'Baseball',
+  'Hockey',
+] as const
+export type SportTypes = (typeof allSportTypes)[number]

@@ -1,19 +1,22 @@
-import { Fragment } from 'react'
 import type { SportLeague } from '~/types/sport-league'
 
 type SportLeagueProps = {
   sportLeague: SportLeague
 }
 export default function SportLeagueItem({ sportLeague }: SportLeagueProps) {
+  const logo = sportLeague.logos[0]
   return (
-    <Fragment key={sportLeague.id}>
+    <>
       <img
-        style={{ width: '5rem', gridColumn: 1, padding: '.5rem' }}
-        src={sportLeague.logos[1]}
+        alt={sportLeague.abbreviation}
+        style={{ width: '3.5rem', gridColumn: 1, padding: '.5rem' }}
+        src={logo}
       />
-      <div style={{ gridColumn: 2, fontSize: '3rem', alignContent: 'center' }}>
+      <div
+        style={{ gridColumn: 2, fontSize: '1.5rem', alignContent: 'center' }}
+      >
         {sportLeague.displayName}
       </div>
-    </Fragment>
+    </>
   )
 }

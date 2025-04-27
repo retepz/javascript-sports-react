@@ -1,12 +1,10 @@
-# Welcome to React Router!
+# Welcome to Sports React!
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A react based frontend for [Sports Api](https://github.com/retepz/dotnet-sports-api)
 
 ## Features
 
-- 🚀 Server-side rendering
+- 🚀 (Potential for) Server-side rendering
 - ⚡️ Hot Module Replacement (HMR)
 - 📦 Asset bundling and optimization
 - 🔄 Data loading and mutations
@@ -79,6 +77,4 @@ Make sure to deploy the output of `npm run build`
 
 ## Styling
 
----
-
-Built with ❤️ using React Router.
+Hand rolled css (to practice my css skills)
