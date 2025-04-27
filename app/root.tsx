@@ -22,28 +22,53 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <div
+        <header
           style={{
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr',
-            height: '100vh',
-            columnGap: '2rem',
+            height: '5rem',
+            backgroundColor: '#2f0259',
+            marginBottom: '.5rem',
+            alignContent: 'center',
+            display: 'flex',
           }}
         >
-          <aside
+          <img
             style={{
-              display: 'grid',
-              alignSelf: 'start',
-              rowGap: '1rem',
+              width: '4rem',
+              marginLeft: '.5rem',
+            }}
+            src='/images/logo.svg'
+          />
+          <div
+            style={{
+              alignContent: 'center',
               fontSize: '1.5rem',
+              marginLeft: '.5rem',
+            }}
+          >
+            <div>Sports</div> <div>React</div>
+          </div>
+        </header>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+          }}
+        >
+          <nav
+            style={{
+              fontSize: '1.2rem',
+              width: '11rem',
+              maxWidth: '11rem',
+              flexGrow: 1,
+              flexShrink: 0,
+              borderRight: '.1rem solid #a8acbd',
             }}
           >
             <MainNav />
-          </aside>
+          </nav>
           <main
             style={{
-              backgroundColor: '#bdb9b9',
-              color: 'Black',
+              flexGrow: 1,
             }}
           >
             {children}

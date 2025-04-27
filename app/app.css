@@ -3,5 +3,11 @@ html,
 body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
+    font-family: "Lucida Console", "Courier New", monospace;
+    margin: 0;
   }
+}
+
+a, a:visited {
+  color: inherit;
 }

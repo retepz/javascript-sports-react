@@ -5,8 +5,8 @@ import useSportLeagues from '~/hooks/api/use-sport-leagues'
 
 export function meta({ params }: Route.MetaArgs) {
   return [
-    { title: `Sport Leagues | ${params.sport}` },
-    { name: 'description', content: 'Sport Leagues' },
+    { title: `Leagues | ${params.sport}` },
+    { name: 'description', content: `All leagues for ${params.sport}` },
   ]
 }
 
@@ -26,9 +26,8 @@ export default function SportLeagues({ params }: Route.ComponentProps) {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
-        columnGap: '.5rem',
-        rowGap: '1rem',
+        rowGap: '1.5rem',
+        margin: '1rem',
       }}
     >
       {data?.leagues
