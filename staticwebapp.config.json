@@ -1,1 +1,11 @@
-{}
+{
+  "routes": [
+    {
+      "route": "*",
+      "methods": [
+        "get"
+      ],
+      "rewrite": "/"
+    }
+  ]
+}
