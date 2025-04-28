@@ -1,4 +1,5 @@
 import { useQuery, type QueryFunction } from '@tanstack/react-query'
+import environment from '~/environment'
 import type { SportLeague } from '~/types/sport-league'
 import type { SportTypes } from '~/types/sport-type'
 
@@ -11,9 +12,7 @@ export const loadSportLeagues: QueryFunction<
   never
 > = async ({ queryKey }) => {
   const [, sport] = queryKey
-  const response = await fetch(
-    `http://localhost:5094/api/sport/${sport}/leagues`,
-  )
+  const response = await fetch(`${environment.api}/api/sport/${sport}/leagues`)
   return await response.json()
 }
 
