@@ -6,8 +6,8 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "build": "cp:local && react-router build",
-    "build:prod": "cp:prod && react-router build",
+    "build": "npm run cp:local && react-router build",
+    "build:prod": "npm run cp:prod && react-router build",
     "cp:local": "shx cp ./environments/local/environment.ts ./app/environment.ts",
     "cp:prod": "shx cp ./environments/production/environment.ts ./app/environment.ts",
     "dev": "npm run cp:local && react-router dev",
