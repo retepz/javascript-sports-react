@@ -1,6 +1,9 @@
+import { Link } from 'react-router'
 import type { SportLeague } from '~/types/sport-league'
+import type { SportTypes } from '~/types/sport-type'
 
 type SportLeagueProps = {
+  sport: SportTypes
   sportLeague: SportLeague
 }
 export default function SportLeagueItem({ sportLeague }: SportLeagueProps) {
@@ -23,9 +26,12 @@ export default function SportLeagueItem({ sportLeague }: SportLeagueProps) {
         }}
         src={logo}
       />
-      <div style={{ fontSize: '1.5rem', alignContent: 'center' }}>
+      <Link
+        to={`/leagues/${sportLeague.leagueType}/week`}
+        style={{ fontSize: '1.5rem', alignContent: 'center' }}
+      >
         {sportLeague.displayName}
-      </div>
+      </Link>
     </div>
   )
 }

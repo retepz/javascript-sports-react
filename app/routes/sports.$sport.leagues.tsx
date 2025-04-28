@@ -2,6 +2,8 @@ import SportLeagueItem from '~/components/sport-league-item'
 import type { Route } from './+types/sports.$sport.leagues'
 import type { SportTypes } from '~/types/sport-type'
 import useSportLeagues from '~/hooks/api/use-sport-leagues'
+import Loading from '~/components/loading'
+import RouteContentContainer from '~/components/route-content-container'
 
 export function meta({ params }: Route.MetaArgs) {
   return [
@@ -15,28 +17,37 @@ export default function SportLeagues({ params }: Route.ComponentProps) {
     sport: params.sport as SportTypes,
   })
   if (error) {
-    return <div>Error while attempting to fetch league: {error.message}</div>
+    return (
+      <RouteContentContainer>
+        Error while attempting to fetch league: {error.message}
+      </RouteContentContainer>
+    )
   }
 
   if (isPending) {
-    return <div>Loading...</div>
+    return (
+      <RouteContentContainer>
+        <Loading />
+      </RouteContentContainer>
+    )
   }
 
   return (
-    <div
-      style={{
-        display: 'grid',
-        rowGap: '1.5rem',
-        margin: '1rem',
-      }}
-    >
+    <RouteContentContainer>
       {data?.leagues
         ?.filter(
-          league => league.displayName !== null && league.displayName !== '',
+          league =>
+            league.displayName !== null &&
+            league.displayName !== '' &&
+            league.leagueType !== 'None',
         )
         .map(league => (
-          <SportLeagueItem key={league.id} sportLeague={league} />
+          <SportLeagueItem
+            key={league.id}
+            sportLeague={league}
+            sport={params.sport as SportTypes}
+          />
         ))}
-    </div>
+    </RouteContentContainer>
   )
 }

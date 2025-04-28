@@ -6,13 +6,14 @@ import type { SportTypes } from '~/types/sport-type'
 type SportLeaguesResponse = {
   leagues: SportLeague[]
 }
-export const loadSportLeagues: QueryFunction<
+
+const loadSportLeagues: QueryFunction<
   SportLeaguesResponse,
   readonly unknown[],
   never
 > = async ({ queryKey }) => {
   const [, sport] = queryKey
-  const response = await fetch(`${environment.api}/api/sport/${sport}/leagues`)
+  const response = await fetch(`${environment.api}/api/sports/${sport}/leagues`)
   return await response.json()
 }
 

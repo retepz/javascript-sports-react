@@ -11,6 +11,10 @@ import type { Route } from './+types/root'
 import './app.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import MainNav from './components/main-nav'
+import Loading from './components/loading'
+import MainHeader from './components/main-header'
+import MainContent from './components/main-content'
+import MainContainer from './components/main-container'
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,64 +26,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <header
-          style={{
-            height: '5rem',
-            backgroundColor: '#2f0259',
-            marginBottom: '.5rem',
-            alignContent: 'center',
-            display: 'flex',
-          }}
-        >
-          <img
-            style={{
-              width: '4rem',
-              marginLeft: '.5rem',
-            }}
-            src='/images/logo.svg'
-          />
-          <div
-            style={{
-              alignContent: 'center',
-              fontSize: '1.5rem',
-              marginLeft: '.5rem',
-            }}
-          >
-            <div>Sports</div> <div>React</div>
-          </div>
-        </header>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <nav
-            style={{
-              fontSize: '1.2rem',
-              width: '11rem',
-              maxWidth: '11rem',
-              flexGrow: 1,
-              flexShrink: 0,
-              borderRight: '.1rem solid #a8acbd',
-            }}
-          >
-            <MainNav />
-          </nav>
-          <main
-            style={{
-              flexGrow: 1,
-            }}
-          >
-            {children}
-          </main>
-        </div>
+        <MainHeader />
+        <MainContainer>
+          <MainNav />
+          <MainContent>{children}</MainContent>
+        </MainContainer>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   )
 }
+
+export function HydrateFallback() {
+  return <Loading />
+}
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
