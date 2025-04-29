@@ -11,24 +11,27 @@ export default function SportLeagueItem({ sportLeague }: SportLeagueProps) {
   return (
     <div
       style={{
-        display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
-        columnGap: '2rem',
-        minHeight: '5.5rem',
+        display: 'flex',
+        flexDirection: 'row',
+        minHeight: '3rem',
       }}
     >
       <img
         alt={sportLeague.abbreviation}
         style={{
+          flexShrink: '0',
           width: '3.5rem',
-          alignContent: 'center',
-          padding: '.5rem',
+          alignSelf: 'center',
+          marginRight: '2rem',
         }}
         src={logo}
       />
       <Link
         to={`/leagues/${sportLeague.leagueType}/week`}
-        style={{ fontSize: '1.5rem', alignContent: 'center' }}
+        style={{
+          fontSize: '1.5rem',
+          alignSelf: 'center',
+        }}
       >
         {sportLeague.displayName}
       </Link>

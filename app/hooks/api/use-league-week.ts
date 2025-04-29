@@ -15,6 +15,10 @@ const loadLeagueWeek: QueryFunction<
   if (response.status === 404) {
     return null
   }
+  if (response.status === 500) {
+    const errorResponse = await response.text()
+    return Promise.reject(new Error(errorResponse))
+  }
   return await response.json()
 }
 
@@ -22,6 +26,7 @@ export default function useLeagueWeek({ league }: { league: LeagueTypes }) {
   const { isPending, error, data } = useQuery<LeagueWeek>({
     queryKey: ['league', league, 'currentweek'],
     queryFn: loadLeagueWeek,
+    retry: 1,
   })
 
   return { isPending, error, data }

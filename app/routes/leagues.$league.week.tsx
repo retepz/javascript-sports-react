@@ -34,21 +34,18 @@ export default function LeagueWeek({ params }: Route.ComponentProps) {
     )
   }
 
-  if (data === null) {
-    return (
-      <RouteContentContainer>
-        <div>{params.league}</div>
-        No games this week/Off season
-      </RouteContentContainer>
-    )
-  }
-
   return (
     <RouteContentContainer>
-      <div>{params.league}</div>
-      <div>{data?.displayName}</div>
-      <div>{data?.startDate}</div>
-      <div>{data?.endDate}</div>
+      <div style={{ fontSize: '2rem' }}>{params.league}</div>
+      {data === null ? (
+        <div>No games this week/Off season</div>
+      ) : (
+        <>
+          <div>{data?.displayName}</div>
+          <div>{data?.startDate}</div>
+          <div>{data?.endDate}</div>
+        </>
+      )}
     </RouteContentContainer>
   )
 }
