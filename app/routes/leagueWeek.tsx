@@ -2,7 +2,8 @@ import Loading from '~/components/loading'
 import useLeagueWeek from '~/hooks/api/use-league-week'
 import type { LeagueTypes } from '~/types/league-types'
 import RouteContentContainer from '~/components/route-content-container'
-import type { Route } from './+types/leagues.$league.week'
+import { Link } from 'react-router'
+import type { Route } from './+types/leagueWeek'
 
 export function meta({ params }: Route.MetaArgs) {
   return [
@@ -41,7 +42,9 @@ export default function LeagueWeek({ params }: Route.ComponentProps) {
         <div>No games this week/Off season</div>
       ) : (
         <>
-          <div>{data?.displayName}</div>
+          <Link to={`/leagues/${params.league}/week/events`}>
+            {data?.displayName}
+          </Link>
           <div>{data?.startDate}</div>
           <div>{data?.endDate}</div>
         </>

@@ -1,7 +1,8 @@
-import { type RouteConfig } from '@react-router/dev/routes'
-import { flatRoutes } from '@react-router/fs-routes'
+import { index, route, type RouteConfig } from '@react-router/dev/routes'
 
-// https://reactrouter.com/how-to/file-route-conventions
-export default flatRoutes({
-  rootDirectory: 'routes',
-}) satisfies RouteConfig
+export default [
+  index('routes/index.tsx'),
+  route('/sports/:sport/leagues', 'routes/sportLeagues.tsx'),
+  route('/leagues/:league/week/events', 'routes/leagueWeekEvents.tsx'),
+  route('/leagues/:league/week', 'routes/leagueWeek.tsx'),
+] satisfies RouteConfig
