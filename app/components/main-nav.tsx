@@ -1,19 +1,26 @@
+import { useState } from 'react'
 import { NavLink } from 'react-router'
 import { allSportTypes } from '~/types/sport-type'
 
 export default function MainNav() {
+  const [show, setShow] = useState<boolean>(true)
+  const handleToggleNavClick = () => {
+    setShow(!show)
+  }
+
   return (
     <nav
       style={{
         fontSize: '1.2rem',
-        width: '11rem',
+        width: show ? '11rem' : '1.5rem',
         maxWidth: '11rem',
-        flexGrow: 1,
+        borderRight: show ? '.1rem solid #a8acbd' : undefined,
+        display: 'grid',
+        gridTemplateRows: '1fr 1fr',
         flexShrink: 0,
-        borderRight: '.1rem solid #a8acbd',
       }}
     >
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <div style={{ display: show ? 'flex' : 'none', flexDirection: 'column' }}>
         {allSportTypes.map(sportType => (
           <NavLink
             key={sportType}
@@ -37,6 +44,19 @@ export default function MainNav() {
           </NavLink>
         ))}
       </div>
+      <button
+        style={{
+          marginRight: show ? '.5rem' : '1rem',
+          justifySelf: 'end',
+          alignSelf: show ? 'start' : 'end',
+        }}
+        onClick={handleToggleNavClick}
+      >
+        <img
+          style={{ width: '.8rem' }}
+          src={show ? '/images/close.svg' : '/images/open.svg'}
+        />
+      </button>
     </nav>
   )
 }

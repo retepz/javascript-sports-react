@@ -30,7 +30,7 @@ export function EventItemTeam({ isFirst, team }: EventItemTeamProps) {
     >
       <img
         style={{
-          width: '5rem',
+          maxWidth: '5rem',
           gridColumn: imageColumn,
           gridRow: 1,
         }}
@@ -45,10 +45,12 @@ export function EventItemTeam({ isFirst, team }: EventItemTeamProps) {
           gridColumn: teamInfoGridColumn,
         }}
       >
-        <div>{team.record}</div>
-        <div>{team.location}</div>
-        <div>{team.name}</div>
-        <div>{team.score}</div>
+        <div style={{ fontSize: '.8rem' }}>{team.record}</div>
+        <div style={{ fontSize: '1rem' }}>{team.location}</div>
+        <div style={{ fontSize: '1rem' }}>{team.name}</div>
+        <div style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>
+          {team.score}
+        </div>
       </div>
 
       <div

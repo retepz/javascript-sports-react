@@ -5,25 +5,26 @@ export default function MainHeader() {
         height: '5rem',
         backgroundColor: '#2f0259',
         marginBottom: '.5rem',
-        alignContent: 'center',
-        display: 'flex',
+        display: 'grid',
       }}
     >
-      <img
-        style={{
-          width: '4rem',
-          marginLeft: '.5rem',
-        }}
-        src='/images/logo.svg'
-      />
       <div
-        style={{
-          alignContent: 'center',
-          fontSize: '1.5rem',
-          marginLeft: '.5rem',
-        }}
+        style={{ alignSelf: 'center', display: 'flex', marginLeft: '.5rem' }}
       >
-        <div>Sports</div> <div>React</div>
+        <img
+          style={{
+            width: '4rem',
+          }}
+          src='/images/logo.svg'
+        />
+        <div
+          style={{
+            alignContent: 'center',
+            fontSize: '1.5rem',
+          }}
+        >
+          <div>Sports</div> <div>React</div>
+        </div>
       </div>
     </header>
   )

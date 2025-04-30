@@ -5,8 +5,8 @@ export type SportLeagueEvent = {
   firstTeam: SportCompetitor
   secondTeam: SportCompetitor
   gameTime: string
-  quarterDisplay: string
-  gameTimeDisplay: string
+  statusType: string
+  downDistance: string
   isFinished: string
   isInFuture: string
   isLive: string
