@@ -8,11 +8,13 @@
   "scripts": {
     "build": "npm run cp:local && react-router build",
     "build:prod": "npm run cp:prod && react-router build",
-    "cp:local": "shx cp ./environments/local/environment.ts ./app/environment.ts",
-    "cp:prod": "shx cp ./environments/production/environment.ts ./app/environment.ts",
+    "build:prod:gh": "npm run cp:prod:gh && react-router build",
+    "cp:local": "shx cp ./app/environments/local/environment.ts ./app/environment.ts",
+    "cp:prod": "shx cp ./app/environments/production/environment.ts ./app/environment.ts",
+    "cp:prod:gh": "shx cp ./app/environments/production-gh/environment.ts ./app/environment.ts",
     "dev": "npm run cp:local && react-router dev",
     "dev:prod": "npm run cp:prod && react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "npm run dev",
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
