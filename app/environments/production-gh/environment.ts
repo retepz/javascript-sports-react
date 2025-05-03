@@ -1,10 +1,9 @@
-import type { Environment } from '~/types/environment'
-import productionEnvironment from '~/environments/production/environment'
+import type { Environment } from 'app/types/environment'
 
 const environment: Environment = {
-  ...productionEnvironment,
+  api: 'https://dotnetsports-b6h2hbecefepdyde.canadacentral-01.azurewebsites.net/',
   name: 'production-gh',
-  useHashRouter: true,
+  preRenderRoutes: true,
 }
 
 export default environment
