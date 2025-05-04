@@ -1,7 +1,7 @@
 import type { SportLeagueEvent } from '~/types/sport-league-event'
 import { LeagueWeekEventItemHeader } from './league-week-event-item-header'
-import { EventItemTeam } from './event-item-team'
-import { EventItemTeamsContainer } from './event-item-teams-container'
+import { EventItemTeamsContainer } from '../event-item/event-item-teams-container'
+import { EventItemTeam } from '../event-item/event-item-team'
 
 type LeagueWeekEventItemProps = {
   event: SportLeagueEvent

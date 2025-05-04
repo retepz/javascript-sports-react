@@ -12,7 +12,7 @@ export default function MainNav() {
     <nav
       style={{
         fontSize: '1.2rem',
-        width: show ? '11rem' : '1.5rem',
+        width: show ? '11rem' : 0,
         maxWidth: '11rem',
         borderRight: show ? '.1rem solid #a8acbd' : undefined,
         display: 'grid',
@@ -46,11 +46,13 @@ export default function MainNav() {
       </div>
       <button
         style={{
-          marginRight: show ? '.5rem' : '1rem',
-          justifySelf: 'end',
-          alignSelf: show ? 'start' : 'end',
+          position: 'fixed',
+          top: '50vh',
+          left: '.2rem',
+          opacity: 0.3,
         }}
         onClick={handleToggleNavClick}
+        title='Toggle Nav'
       >
         <img
           style={{ width: '.8rem' }}

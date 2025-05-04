@@ -1,9 +1,9 @@
-import Loading from '~/components/loading'
+import Loading from '~/components/loading/loading'
 import type { LeagueTypes } from '~/types/league-types'
 import RouteContentContainer from '~/components/route-content-container'
 import useLeagueWeekEvents from '~/hooks/api/use-league-week-events'
 import type { Route } from './+types/leagueWeekEvents'
-import { LeagueWeekEventItem } from '~/components/league-week-event-item'
+import { LeagueWeekEventItem } from '~/components/league-week-event-item/league-week-event-item'
 
 export function meta({ params }: Route.MetaArgs) {
   return [

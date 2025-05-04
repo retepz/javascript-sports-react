@@ -1,7 +1,7 @@
 import SportLeagueItem from '~/components/sport-league-item'
-import type { SportTypes } from '~/types/sport-type'
+import { allSportTypes, type SportTypes } from '~/types/sport-type'
 import useSportLeagues from '~/hooks/api/use-sport-leagues'
-import Loading from '~/components/loading'
+import Loading from '~/components/loading/loading'
 import RouteContentContainer from '~/components/route-content-container'
 import type { Route } from './+types/sportLeagues'
 
@@ -14,7 +14,7 @@ export function meta({ params }: Route.MetaArgs) {
 
 export default function SportLeagues({ params }: Route.ComponentProps) {
   const { isPending, error, data } = useSportLeagues({
-    sport: params.sport as SportTypes,
+    sport: (params.sport as SportTypes) ?? allSportTypes[0],
   })
   if (error) {
     return (

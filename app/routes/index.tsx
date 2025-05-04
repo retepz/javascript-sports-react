@@ -1,4 +1,6 @@
-import { Navigate } from 'react-router'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router'
+import Loading from '~/components/loading/loading'
 import { allSportTypes } from '~/types/sport-type'
 
 export function meta() {
@@ -6,6 +8,11 @@ export function meta() {
 }
 
 export default function Index() {
-  const firstSport = allSportTypes[0]
-  return <Navigate to={`/sports/${firstSport}/leagues`} replace={true} />
+  const navigate = useNavigate()
+  useEffect(() => {
+    const firstSport = allSportTypes[0]
+    navigate(`/sports/${firstSport}/leagues`, { replace: true })
+  }, [])
+
+  return <Loading />
 }

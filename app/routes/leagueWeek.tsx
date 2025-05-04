@@ -1,4 +1,4 @@
-import Loading from '~/components/loading'
+import Loading from '~/components/loading/loading'
 import useLeagueWeek from '~/hooks/api/use-league-week'
 import type { LeagueTypes } from '~/types/league-types'
 import RouteContentContainer from '~/components/route-content-container'
