@@ -6,7 +6,7 @@ import type { SportLeagueEvent } from '~/types/sport-league-event'
 type Response = SportLeagueEvent[]
 
 const loadLeagueWeekEvents: QueryFunction<
-Response,
+  Response,
   readonly unknown[],
   never
 > = async ({ queryKey }) => {
@@ -26,7 +26,11 @@ Response,
   return await response.json()
 }
 
-export default function useLeagueWeekEvents({ league }: { league: LeagueTypes }) {
+export default function useLeagueWeekEvents({
+  league,
+}: {
+  league: LeagueTypes
+}) {
   const { isPending, error, data } = useQuery<Response>({
     queryKey: ['league', league, 'currentweek', 'events'],
     queryFn: loadLeagueWeekEvents,

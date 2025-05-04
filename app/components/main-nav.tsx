@@ -50,12 +50,16 @@ export default function MainNav() {
           top: '50vh',
           left: '.2rem',
           opacity: 0.3,
+          display: 'grid',
         }}
         onClick={handleToggleNavClick}
         title='Toggle Nav'
       >
         <img
-          style={{ width: '.8rem' }}
+          style={{
+            width: '1rem',
+            padding: '.01rem',
+          }}
           src={show ? '/images/close.svg' : '/images/open.svg'}
         />
       </button>

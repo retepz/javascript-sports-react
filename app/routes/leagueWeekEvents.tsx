@@ -41,7 +41,11 @@ export default function LeagueWeekEvents({ params }: Route.ComponentProps) {
       {data === null ? (
         <div>No games this week/Off season</div>
       ) : (
-        data?.map(event => <LeagueWeekEventItem event={event} key={event.id} />)
+        data
+          ?.sort((a, b) =>
+            a.isInFuture && b.isInFuture ? 0 : a.isInFuture ? -1 : 1,
+          )
+          .map(event => <LeagueWeekEventItem event={event} key={event.id} />)
       )}
     </RouteContentContainer>
   )
