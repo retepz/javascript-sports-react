@@ -5,3 +5,4 @@ export const allSportTypes = [
   'Hockey',
 ] as const
 export type SportTypes = (typeof allSportTypes)[number]
+export const defaultSportType = allSportTypes[0]

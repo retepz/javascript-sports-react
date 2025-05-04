@@ -1,12 +1,34 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
-import { allSportTypes } from '~/types/sport-type'
+import { CurrentSportContext } from '~/context'
+import { useLocalStorage } from '~/hooks/use-local-storage'
+import { allSportTypes, type SportTypes } from '~/types/sport-type'
+
+const localStorageKey = 'showNav'
 
 export default function MainNav() {
-  const [show, setShow] = useState<boolean>(true)
+  const { contextSport, setContextSport } = useContext(CurrentSportContext)
+  const handleOnClick = (sportType: SportTypes) => () =>
+    setContextSport(sportType)
+
+  const { getLocalStorage, setLocalStorage } = useLocalStorage()
+  const [show, setShow] = useState<boolean>(false)
   const handleToggleNavClick = () => {
-    setShow(!show)
+    const newValue = !show
+    setLocalStorage(localStorageKey, `${newValue}`)
+    setShow(newValue)
   }
+
+  useEffect(() => {
+    const fromLocalStorage = getLocalStorage(localStorageKey)
+
+    if (fromLocalStorage !== null) {
+      const asBool = fromLocalStorage === 'true'
+      setShow(asBool)
+      return
+    }
+    setShow(true)
+  }, [])
 
   return (
     <nav
@@ -24,12 +46,13 @@ export default function MainNav() {
         {allSportTypes.map(sportType => (
           <NavLink
             key={sportType}
+            onClick={handleOnClick(sportType)}
             style={({ isActive }) => {
               const base: React.CSSProperties = {
                 display: 'flex',
                 margin: '1rem 1rem 1rem .5rem',
               }
-              if (isActive) {
+              if (isActive || contextSport === sportType) {
                 return {
                   ...base,
                   paddingLeft: '.5rem',

@@ -15,8 +15,20 @@ import Loading from './components/loading/loading'
 import MainHeader from './components/main-header'
 import MainContent from './components/main-content'
 import MainContainer from './components/main-container'
+import {
+  type CurrentSportContext as CurrentSportContextType,
+  CurrentSportContext,
+} from './context'
+import { useContext, useState } from 'react'
+import { type SportTypes } from './types/sport-type'
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { contextSport } = useContext(CurrentSportContext)
+  const [currentSport, setCurrentSport] =
+    useState<CurrentSportContextType['contextSport']>(contextSport)
+  const handleSetContextSport = (newSport: SportTypes) => {
+    setCurrentSport(newSport)
+  }
   return (
     <html lang='en'>
       <head>
@@ -26,20 +38,31 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <MainHeader />
-        <MainContainer>
-          <MainNav />
-          <MainContent>{children}</MainContent>
-        </MainContainer>
-        <ScrollRestoration />
-        <Scripts />
+        <CurrentSportContext
+          value={{
+            setContextSport: handleSetContextSport,
+            contextSport: currentSport,
+          }}
+        >
+          <MainHeader />
+          <MainContainer>
+            <MainNav />
+            <MainContent>{children}</MainContent>
+          </MainContainer>
+          <ScrollRestoration />
+          <Scripts />
+        </CurrentSportContext>
       </body>
     </html>
   )
 }
 
 export function HydrateFallback() {
-  return <Loading />
+  return (
+    <MainContainer>
+      <Loading />
+    </MainContainer>
+  )
 }
 
 const queryClient = new QueryClient({
