@@ -1,13 +1,14 @@
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
-import { CurrentSportContext } from '~/context'
 import { useLocalStorage } from '~/hooks/use-local-storage'
 import { allSportTypes, type SportTypes } from '~/types/sport-type'
+import './main-nav.css'
+import { useCurrentSportContext } from '~/context/current-sport-context'
 
 const localStorageKey = 'showNav'
 
 export default function MainNav() {
-  const { contextSport, setContextSport } = useContext(CurrentSportContext)
+  const { contextSport, setContextSport } = useCurrentSportContext()
   const handleOnClick = (sportType: SportTypes) => () =>
     setContextSport(sportType)
 
@@ -33,13 +34,8 @@ export default function MainNav() {
   return (
     <nav
       style={{
-        fontSize: '1.2rem',
         width: show ? '11rem' : 0,
-        maxWidth: '11rem',
         borderRight: show ? '.1rem solid #a8acbd' : undefined,
-        display: 'grid',
-        gridTemplateRows: '1fr 1fr',
-        flexShrink: 0,
       }}
     >
       <div style={{ display: show ? 'flex' : 'none', flexDirection: 'column' }}>
@@ -68,23 +64,11 @@ export default function MainNav() {
         ))}
       </div>
       <button
-        style={{
-          position: 'fixed',
-          top: '50vh',
-          left: '.2rem',
-          opacity: 0.3,
-          display: 'grid',
-        }}
+        className={'toggle-nav'}
         onClick={handleToggleNavClick}
         title='Toggle Nav'
       >
-        <img
-          style={{
-            width: '1rem',
-            padding: '.01rem',
-          }}
-          src={show ? '/images/close.svg' : '/images/open.svg'}
-        />
+        <img src={show ? '/images/close.svg' : '/images/open.svg'} />
       </button>
     </nav>
   )

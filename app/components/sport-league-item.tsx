@@ -1,6 +1,5 @@
-import { useContext } from 'react'
 import { Link } from 'react-router'
-import { CurrentSportContext } from '~/context'
+import { useCurrentSportContext } from '~/context/current-sport-context'
 import type { SportLeague } from '~/types/sport-league'
 import type { SportTypes } from '~/types/sport-type'
 
@@ -12,8 +11,7 @@ export default function SportLeagueItem({
   sportLeague,
   sport,
 }: SportLeagueProps) {
-  const { setContextSport } = useContext(CurrentSportContext)
-
+  const { setContextSport } = useCurrentSportContext()
   const handleClick = () => {
     setContextSport(sport)
   }

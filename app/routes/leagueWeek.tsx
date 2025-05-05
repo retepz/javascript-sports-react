@@ -1,9 +1,9 @@
 import Loading from '~/components/loading/loading'
 import useLeagueWeek from '~/hooks/api/use-league-week'
 import type { LeagueTypes } from '~/types/league-types'
-import RouteContentContainer from '~/components/route-content-container'
 import { Link } from 'react-router'
 import type { Route } from './+types/leagueWeek'
+import RouteContentContainer from '~/components/route-content-container'
 
 export function meta({ params }: Route.MetaArgs) {
   return [

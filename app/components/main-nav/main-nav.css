@@ -1,0 +1,25 @@
+nav {
+  font-size: 1.2rem;
+  max-width: 11rem;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  flex-shrink: 0;
+}
+
+button.toggle-nav {
+  position: fixed;
+  top: 50vh;
+  left: 0.2rem;
+  opacity: 0.3;
+  display: grid;
+}
+
+button.toggle-nav:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.toggle-nav img {
+  width: 1rem;
+  padding: 0.01rem;
+}

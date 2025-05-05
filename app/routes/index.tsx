@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
 import Loading from '~/components/loading/loading'
-import { CurrentSportContext } from '~/context'
+import { useCurrentSportContext } from '~/context/current-sport-context'
 import { defaultSportType } from '~/types/sport-type'
 
 export function meta() {
@@ -9,7 +9,7 @@ export function meta() {
 }
 
 export default function Index() {
-  const { setContextSport } = useContext(CurrentSportContext)
+  const { setContextSport } = useCurrentSportContext()
 
   const navigate = useNavigate()
   useEffect(() => {

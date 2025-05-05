@@ -2,8 +2,8 @@ import SportLeagueItem from '~/components/sport-league-item'
 import { defaultSportType, type SportTypes } from '~/types/sport-type'
 import useSportLeagues from '~/hooks/api/use-sport-leagues'
 import Loading from '~/components/loading/loading'
-import RouteContentContainer from '~/components/route-content-container'
 import type { Route } from './+types/sportLeagues'
+import RouteContentContainer from '~/components/route-content-container'
 
 export function meta({ params }: Route.MetaArgs) {
   return [

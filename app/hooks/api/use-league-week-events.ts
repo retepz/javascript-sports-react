@@ -1,7 +1,8 @@
-import { useQuery, type QueryFunction } from '@tanstack/react-query'
+import { type QueryFunction } from '@tanstack/react-query'
 import environment from '~/environment'
 import type { LeagueTypes } from '~/types/league-types'
 import type { SportLeagueEvent } from '~/types/sport-league-event'
+import useQueryDelayed from '../use-query-delayed'
 
 type Response = SportLeagueEvent[]
 
@@ -31,10 +32,9 @@ export default function useLeagueWeekEvents({
 }: {
   league: LeagueTypes
 }) {
-  const { isPending, error, data } = useQuery<Response>({
+  const { isPending, error, data } = useQueryDelayed<Response>({
     queryKey: ['league', league, 'currentweek', 'events'],
     queryFn: loadLeagueWeekEvents,
-    retry: 1,
   })
 
   return { isPending, error, data }

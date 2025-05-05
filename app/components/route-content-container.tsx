@@ -1,6 +1,7 @@
 type RouteContentContainerProps = {
   children: React.ReactNode
 }
+
 export default function RouteContentContainer({
   children,
 }: RouteContentContainerProps) {

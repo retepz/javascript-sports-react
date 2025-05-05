@@ -10,25 +10,14 @@ import {
 import type { Route } from './+types/root'
 import './app.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import MainNav from './components/main-nav'
+import MainNav from './components/main-nav/main-nav'
 import Loading from './components/loading/loading'
 import MainHeader from './components/main-header'
 import MainContent from './components/main-content'
 import MainContainer from './components/main-container'
-import {
-  type CurrentSportContext as CurrentSportContextType,
-  CurrentSportContext,
-} from './context'
-import { useContext, useState } from 'react'
-import { type SportTypes } from './types/sport-type'
+import { CurrentSportContextProvider } from './context/current-sport-context'
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { contextSport } = useContext(CurrentSportContext)
-  const [currentSport, setCurrentSport] =
-    useState<CurrentSportContextType['contextSport']>(contextSport)
-  const handleSetContextSport = (newSport: SportTypes) => {
-    setCurrentSport(newSport)
-  }
   return (
     <html lang='en'>
       <head>
@@ -38,20 +27,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <CurrentSportContext
-          value={{
-            setContextSport: handleSetContextSport,
-            contextSport: currentSport,
-          }}
-        >
-          <MainHeader />
-          <MainContainer>
-            <MainNav />
-            <MainContent>{children}</MainContent>
-          </MainContainer>
-          <ScrollRestoration />
-          <Scripts />
-        </CurrentSportContext>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
       </body>
     </html>
   )
@@ -76,7 +54,15 @@ const queryClient = new QueryClient({
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <CurrentSportContextProvider>
+        <MainHeader />
+        <MainContainer>
+          <MainNav />
+          <MainContent>
+            <Outlet />
+          </MainContent>
+        </MainContainer>
+      </CurrentSportContextProvider>
     </QueryClientProvider>
   )
 }

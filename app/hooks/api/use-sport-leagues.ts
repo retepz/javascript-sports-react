@@ -1,7 +1,8 @@
-import { useQuery, type QueryFunction } from '@tanstack/react-query'
+import { type QueryFunction } from '@tanstack/react-query'
 import environment from '~/environment'
 import type { SportLeague } from '~/types/sport-league'
 import type { SportTypes } from '~/types/sport-type'
+import useQueryDelayed from '../use-query-delayed'
 
 type SportLeaguesResponse = {
   leagues: SportLeague[]
@@ -18,7 +19,7 @@ const loadSportLeagues: QueryFunction<
 }
 
 export default function useSportLeagues({ sport }: { sport: SportTypes }) {
-  const { isPending, error, data } = useQuery<SportLeaguesResponse>({
+  const { isPending, error, data } = useQueryDelayed<SportLeaguesResponse>({
     queryKey: ['sports', sport, 'leagues'],
     queryFn: loadSportLeagues,
   })
